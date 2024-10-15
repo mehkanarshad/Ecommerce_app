@@ -49,5 +49,5 @@ end
 gem "devise_token_auth", "~> 1.2"
 
 gem "devise", "~> 4.9"
-
+gem "rack-cors" , require: "rack/cors"
 gem "omniauth", "~> 2.1"
