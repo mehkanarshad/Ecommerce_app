@@ -1,17 +1,37 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <SignUp />
-      {/* <Login/> */}
+      <Router>
+        <div className="navbar">
+          <Link className="navbar-text" to="/login">
+            Login
+          </Link>{" "}
+          {"  |  "}
+          <Link className="navbar-text" to="/signup">
+            Sign Up
+          </Link>{" "}
+          {"  |  "}
+          <Link className="navbar-text" to="/">
+            Home
+          </Link>
+        </div>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
