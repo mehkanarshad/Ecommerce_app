@@ -4,6 +4,9 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import ForgotPassword from "./components/ForgotPassword";
+import ChangePassword from "./components/ChangePassword";
+import NewPassword from "./components/NewPassword";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,6 +32,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgotPassword" element={<ForgotPassword />} />
+            <Route path="/changePassword" element={<ChangePassword />} />
+            <Route path="/newPassword" element={<NewPassword />} />
+
           </Routes>
         </div>
       </Router>

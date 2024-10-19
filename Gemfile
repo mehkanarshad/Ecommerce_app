@@ -42,6 +42,7 @@ end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  gem "letter_opener", "~> 1.10"
   # gem "spring"
 end
 
@@ -51,3 +52,4 @@ gem "devise_token_auth", "~> 1.2"
 gem "devise", "~> 4.9"
 gem "rack-cors" , require: "rack/cors"
 gem "omniauth", "~> 2.1"
+
