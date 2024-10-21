@@ -12,16 +12,24 @@ export default function NewPassword() {
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const accessToken = params.get("access-token");
+  const accessToken = params.get("token");
   const client = params.get("client");
   const uid = params.get("uid");
+  // const resetPasswordToken = params.get("resetPasswordToken");
+  console.log(accessToken , client, uid );
 
-  // Capture the token from the URL query parameters
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const token = params.get("reset_password_token"); // Capture the token
-    setResetPasswordToken(token); // Store the token in state
-  }, [location]);
+ 
+  // useEffect(() => {
+  //   const params = new URLSearchParams(location.search);
+  //   const token = params.get("reset_password_token");
+  //   if (token) {
+  //     setResetPasswordToken(token);
+  //   } else {
+  //     console.error("Reset password token is missing in the URL");
+  //   }
+  // }, [location]);
+
+  console.log(resetPasswordToken);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +51,7 @@ export default function NewPassword() {
           },
         }
       );
+
       setMessage("Password successfully changed!");
     } catch (e) {
       setMessage("An error occurred while changing the password.");
