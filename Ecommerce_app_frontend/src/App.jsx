@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import ForgotPassword from "./components/ForgotPassword";
 import ChangePassword from "./components/ChangePassword";
 import NewPassword from "./components/NewPassword";
+import Profile from "./components/Profile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -38,6 +39,9 @@ function App() {
 
           </Routes>
         </div>
+        
+        <Profile/>
+
       </Router>
     </>
   );
