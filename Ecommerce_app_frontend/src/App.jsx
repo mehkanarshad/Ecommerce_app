@@ -3,14 +3,38 @@ import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes, Navigate } from "react-router-dom";
 import ForgotPassword from "./components/ForgotPassword";
 import ChangePassword from "./components/ChangePassword";
 import NewPassword from "./components/NewPassword";
 import Profile from "./components/Profile";
 
 function App() {
+
   const [count, setCount] = useState(0);
+  const [loggedIn , setLoggedIn] = useState(false);
+
+  const validateToken = async () => {
+    const token = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+  
+    const response = await fetch('/auth/validate_token', {
+      method: 'GET',
+      headers: {
+        'access-token': token,
+        'client': client,
+        'uid': uid
+      }
+    });
+  
+    if (response.ok) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  };
+
 
   return (
     <>
@@ -27,6 +51,10 @@ function App() {
           <Link className="navbar-text" to="/">
             Home
           </Link>
+          {"  |  "}
+          <Link className="navbar-text" to="/profile">
+            Profile
+          </Link>
         </div>
         <div>
           <Routes>
@@ -36,12 +64,9 @@ function App() {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/changePassword" element={<ChangePassword />} />
             <Route path="/newPassword" element={<NewPassword />} />
-
+            <Route path="/profile" element={ loggedIn ? <Profile /> : <Navigate to="/login"/>} />
           </Routes>
         </div>
-        
-        <Profile/>
-
       </Router>
     </>
   );
