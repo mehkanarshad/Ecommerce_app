@@ -1,40 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Route, Link, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import ForgotPassword from "./components/ForgotPassword";
 import ChangePassword from "./components/ChangePassword";
 import NewPassword from "./components/NewPassword";
 import Profile from "./components/Profile";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const validateToken = async () => {
+      const token = localStorage.getItem("access-token");
+      const client = localStorage.getItem("client");
+      const uid = localStorage.getItem("uid");
 
-  const [count, setCount] = useState(0);
-  const [loggedIn , setLoggedIn] = useState(false);
+      const response = await fetch("/auth/validate_token", {
+        method: "GET",
+        headers: {
+          "access-token": token,
+          client: client,
+          uid: uid,
+        },
+      });
 
-  const validateToken = async () => {
-    const token = localStorage.getItem('access-token');
-    const client = localStorage.getItem('client');
-    const uid = localStorage.getItem('uid');
-  
-    const response = await fetch('/auth/validate_token', {
-      method: 'GET',
-      headers: {
-        'access-token': token,
-        'client': client,
-        'uid': uid
+      if (response.ok) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
       }
-    });
-  
-    if (response.ok) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  };
-
+    };
+    validateToken();
+  } , []);
 
   return (
     <>
@@ -64,7 +69,10 @@ function App() {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/changePassword" element={<ChangePassword />} />
             <Route path="/newPassword" element={<NewPassword />} />
-            <Route path="/profile" element={ loggedIn ? <Profile /> : <Navigate to="/login"/>} />
+            <Route
+              path="/profile"
+              element={loggedIn ? <Profile /> : <Navigate to="/login" />}
+            />
           </Routes>
         </div>
       </Router>

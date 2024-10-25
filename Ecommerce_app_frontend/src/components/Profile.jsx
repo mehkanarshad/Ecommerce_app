@@ -24,14 +24,14 @@ export default function Profile() {
   return (
     <div>
         <h1>User Profile</h1>
-        {/* <div>
+        <div>
             <label htmlFor="name">Name: </label>
             <input type="text" name="name" id="" value={user?.name} />
         </div> 
         <div>
             <label htmlFor="name">E-mail: </label>
             <input type="text" name="name" id="" value={user?.email} />
-        </div> */}
+        </div>
     </div>
   )
 }
