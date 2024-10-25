@@ -16,50 +16,73 @@ import NewPassword from "./components/NewPassword";
 import Profile from "./components/Profile";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(null); 
+
   useEffect(() => {
     const validateToken = async () => {
       const token = localStorage.getItem("access-token");
       const client = localStorage.getItem("client");
       const uid = localStorage.getItem("uid");
 
-      const response = await fetch("/auth/validate_token", {
-        method: "GET",
-        headers: {
-          "access-token": token,
-          client: client,
-          uid: uid,
-        },
-      });
+      if (!token || !client || !uid) {
+        setLoggedIn(false); 
+        return;
+      }
 
-      if (response.ok) {
-        setLoggedIn(true);
-      } else {
+      try {
+        const response = await fetch("/auth/validate_token", {
+          method: "GET",
+          headers: {
+            "access-token": token,
+            client: client,
+            uid: uid,
+          },
+        });
+
+        if (response.ok) {
+          setLoggedIn(true);
+        } else {
+          setLoggedIn(false);
+        }
+      } catch (error) {
+        console.error("Validation error:", error);
         setLoggedIn(false);
       }
     };
+
     validateToken();
-  } , []);
+  }, []);
+
+  if (loggedIn === null) {
+    return <div>Loading...</div>; 
+  }
 
   return (
     <>
       <Router>
         <div className="navbar">
-          <Link className="navbar-text" to="/login">
-            Login
-          </Link>{" "}
-          {"  |  "}
-          <Link className="navbar-text" to="/signup">
-            Sign Up
-          </Link>{" "}
-          {"  |  "}
-          <Link className="navbar-text" to="/">
-            Home
-          </Link>
-          {"  |  "}
-          <Link className="navbar-text" to="/profile">
-            Profile
-          </Link>
+          {/* {loggedIn ? ( */}
+            <>
+              <Link className="navbar-text" to="/">
+                Home
+              </Link>{" "}
+              {"  |  "}
+              <Link className="navbar-text" to="/profile">
+                Profile
+              </Link>
+            </>
+          { /* ) : ( */}
+            <>
+              <Link className="navbar-text" to="/login">
+                Login
+              </Link>{" "}
+              {"  |  "}
+              <Link className="navbar-text" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          {/* )} */}
+          {console.log(loggedIn)}
         </div>
         <div>
           <Routes>
