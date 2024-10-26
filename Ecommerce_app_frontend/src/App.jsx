@@ -45,11 +45,12 @@ function App() {
           setLoggedIn(false);
         }
       } catch (error) {
-        console.error("Validation error:", error);
         setLoggedIn(false);
         localStorage.clear('access-token');
         localStorage.clear('uid');
         localStorage.clear('client');
+        console.error("Validation error:", error);
+        console.log(loggedIn)
       }
     };
 

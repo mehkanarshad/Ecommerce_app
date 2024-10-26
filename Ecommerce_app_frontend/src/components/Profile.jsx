@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserProfile, updateUserProfile } from "./Api";
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -41,8 +42,8 @@ export default function Profile() {
       reader.onloadend = () => {
         setUser((prevUser) => ({
           ...prevUser,
-          image: reader.result,
-          imageFile: file
+          imageFile: reader.result,
+          image: file
         }));
       };
       reader.readAsDataURL(file);
@@ -56,7 +57,7 @@ export default function Profile() {
     formData.append('name', user.name);
     formData.append('nickname', user.nickname);
     if (user.image instanceof File) {
-        formData.append('image', user.imageFile);
+        formData.append('image', user.image);
     }
 
     try{
@@ -110,9 +111,9 @@ export default function Profile() {
             accept="image/*"
             onChange={handleImageChange}
           />
-          {user.image && (
+          {user.imageFile && (
             <img
-              src={user.image}
+              src={user.imageFile}
               alt="Profile preview"
               style={{ width: "100px", height: "50px", marginTop: "10px" }}
             />

@@ -13,7 +13,7 @@ class UserController < ApplicationController
     private
 
     def user_params
-        params.permit(:name , :nickname , :email , :imageFile)
+        params.permit(:name , :nickname , :email , :image)
     end
 
 end
