@@ -47,6 +47,9 @@ function App() {
       } catch (error) {
         console.error("Validation error:", error);
         setLoggedIn(false);
+        localStorage.clear('access-token');
+        localStorage.clear('uid');
+        localStorage.clear('client');
       }
     };
 

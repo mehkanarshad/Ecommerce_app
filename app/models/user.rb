@@ -6,7 +6,7 @@ class User < ApplicationRecord
             include DeviseTokenAuth::Concerns::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-#   before_action :authenticate_user!
+  # before_action :authenticate_user!
 
 #   def logged_in
 #     render json: { logged_in: true }
