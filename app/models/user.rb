@@ -4,6 +4,7 @@ class User < ApplicationRecord
                     :recoverable, :rememberable, :trackable, :validatable,
                     :confirmable, :omniauthable
             include DeviseTokenAuth::Concerns::User
+            has_one_attached :image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # before_action :authenticate_user!
@@ -14,4 +15,9 @@ class User < ApplicationRecord
   def confirmation_required?
         false if Rails.env.development?
   end
+
+  def image_url
+    Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) if image.attached?
+  end
+
 end

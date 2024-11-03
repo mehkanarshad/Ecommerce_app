@@ -118,6 +118,13 @@ export default function Profile() {
               style={{ width: "100px", height: "50px", marginTop: "10px" }}
             />
           )}
+            {(user.imageFile || user.image_url) && (
+            <img
+              src={user.imageFile || user.image_url} 
+              alt="Profile preview"
+              style={{ width: "100px", height: "50px", marginTop: "10px" }}
+            />
+          )}
         </div>
         <button type="submit">Save Changes</button>
       </form>

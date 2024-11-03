@@ -5,7 +5,7 @@ export const getUserProfile = async () =>{
     const client = localStorage.getItem('client');
     const uid = localStorage.getItem('uid');
 
-    const response = await axios.get('http://localhost:3000/auth/validate_token' , {
+    const response = await axios.get('http://localhost:3000/user/profile' , {
         headers:{
             'access-token': accessToken,
             'client': client,
