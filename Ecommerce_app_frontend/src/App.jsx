@@ -65,7 +65,7 @@ function App() {
     <>
       <Router>
         <div className="navbar">
-          {/* {loggedIn ? ( */}
+          {loggedIn ? (
             <>
               <Link className="navbar-text" to="/">
                 Home
@@ -75,7 +75,7 @@ function App() {
                 Profile
               </Link>
             </>
-          { /* ) : ( */}
+           ) : ( 
             <>
               <Link className="navbar-text" to="/login">
                 Login
@@ -85,7 +85,7 @@ function App() {
                 Sign Up
               </Link>
             </>
-          {/* )} */}
+           )}
           {console.log(loggedIn)}
         </div>
         <div>

@@ -7,12 +7,13 @@ export default function Profile() {
     id: "",
     email: "",
     name: "",
+    role: "",
     nickname: "",
     image: "",
     provider: "",
     uid: "",
   });
-
+  const [message, setMessage] = useState('')
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -56,6 +57,7 @@ export default function Profile() {
     formData.append('email', user.email);
     formData.append('name', user.name);
     formData.append('nickname', user.nickname);
+    formData.append('role', user.role);
     if (user.image instanceof File) {
         formData.append('image', user.image);
     }
@@ -63,8 +65,10 @@ export default function Profile() {
     try{
         const updatedUser = await updateUserProfile(formData);
         console.log("Profile updated successfully", updatedUser);
+        setMessage('Profile updated successfully')
     }catch(e){
         console.log("Updated user profile error ", e);
+        setMessage('Failed to update profile')
     }
   }
 
@@ -103,6 +107,19 @@ export default function Profile() {
           />
         </div>
         <div>
+          <label htmlFor="role">Role: </label>
+          <select
+            type="text"
+            name="role"
+            id="role"
+            value={user?.role || ""}
+            onChange={handleInputChange}
+          >
+            <option value="Customer">Customer</option>
+            <option value="Seller">Seller</option>
+          </select>
+        </div>
+        <div>
           <label htmlFor="image">Image: </label>
           <input
             type="file"
@@ -127,6 +144,14 @@ export default function Profile() {
           )}
         </div>
         <button type="submit">Save Changes</button>
+        {
+          message && (
+            <div>
+              {message}
+            </div>
+          )
+
+        }
       </form>
     </div>
   );
