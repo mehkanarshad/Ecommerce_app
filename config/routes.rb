@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   put 'user/update' , to: 'user#update'
   get '/user/profile', to: 'user#profile'
 
+  get 'products/index' , to: 'product#index'
+  get 'products/show' ,to: 'product#show'
+  get 'products/update', to: 'product#update'
+  get 'products/destroy', to: 'product#destroy'
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

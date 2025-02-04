@@ -10,7 +10,7 @@ class User < ApplicationRecord
 #   end
   enum role: { admin: 'admin', seller: 'seller', customer: 'customer'}
   validates :role, inclusion: {in: roles.keys}
-
+  has_many :products , dependent: :destroy
   after_initialize :set_default_role , if: :new_record?
 
   def set_default_role
