@@ -32,3 +32,19 @@ export const updateUserProfile = async (formData) => {
     });
     return response.data;
 }
+
+
+export const getProducts = async () => {
+    const accessToken = localStorage.getItem('access-token');
+    const client = localStorage.getItem('client');
+    const uid = localStorage.getItem('uid');
+
+    const response = await axios.get('http://localhost:3000/products', {
+        headers: {
+            'access-token': accessToken,
+            'client': client,
+            'uid': uid
+        }
+    })
+    return response.data;
+}

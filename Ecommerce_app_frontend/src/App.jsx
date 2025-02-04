@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
+import Product from "./components/Product";
 import {
   BrowserRouter as Router,
   Route,
@@ -74,6 +75,10 @@ function App() {
               <Link className="navbar-text" to="/profile">
                 Profile
               </Link>
+              {"  |  "}
+              <Link className="navbar-text" to="/products">
+                Products
+              </Link>
             </>
            ) : ( 
             <>
@@ -96,6 +101,7 @@ function App() {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/changePassword" element={<ChangePassword />} />
             <Route path="/newPassword" element={<NewPassword />} />
+            <Route path="/products" element={<Product/>} />
             <Route
               path="/profile"
               element={loggedIn ? <Profile /> : <Navigate to="/login" />}
