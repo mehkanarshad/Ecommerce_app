@@ -107,6 +107,9 @@ export default function Profile() {
           />
         </div>
         <div>
+          <p>Your current role is: {user?.role}</p>
+        </div>
+        <div>
           <label htmlFor="role">Role: </label>
           <select
             type="text"

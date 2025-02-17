@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
 import Product from "./components/Product";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,9 +16,12 @@ import ForgotPassword from "./components/ForgotPassword";
 import ChangePassword from "./components/ChangePassword";
 import NewPassword from "./components/NewPassword";
 import Profile from "./components/Profile";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(null); 
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  console.log(isAuthenticated);
 
   useEffect(() => {
     const validateToken = async () => {
@@ -65,34 +69,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="navbar">
-          {loggedIn ? (
-            <>
-              <Link className="navbar-text" to="/">
-                Home
-              </Link>{" "}
-              {"  |  "}
-              <Link className="navbar-text" to="/profile">
-                Profile
-              </Link>
-              {"  |  "}
-              <Link className="navbar-text" to="/products">
-                Products
-              </Link>
-            </>
-           ) : ( 
-            <>
-              <Link className="navbar-text" to="/login">
-                Login
-              </Link>{" "}
-              {"  |  "}
-              <Link className="navbar-text" to="/signup">
-                Sign Up
-              </Link>
-            </>
-           )}
-          {console.log(loggedIn)}
-        </div>
+        <Navbar/>
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
