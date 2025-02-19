@@ -4,7 +4,8 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
 import Product from "./components/Product";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
+import { loginSuccess, logout } from "./redux/authSlice"; 
 import {
   BrowserRouter as Router,
   Route,
@@ -20,8 +21,8 @@ import Navbar from "./components/Navbar";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(null); 
-  const isAuthenticated = useSelector((state) => state.isAuthenticated);
-  console.log(isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const validateToken = async () => {
@@ -30,6 +31,7 @@ function App() {
       const uid = localStorage.getItem("uid");
 
       if (!token || !client || !uid) {
+        dispatch(logout());
         setLoggedIn(false); 
         return;
       }
@@ -48,6 +50,7 @@ function App() {
           setLoggedIn(true);
         } else {
           setLoggedIn(false);
+          dispatch(logout());
         }
       } catch (error) {
         setLoggedIn(false);
@@ -55,12 +58,11 @@ function App() {
         localStorage.clear('uid');
         localStorage.clear('client');
         console.error("Validation error:", error);
-        console.log(loggedIn)
       }
     };
 
     validateToken();
-  }, []);
+  }, [dispatch]);
 
   if (loggedIn === null) {
     return <div>Loading...</div>; 

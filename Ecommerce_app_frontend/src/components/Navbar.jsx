@@ -6,12 +6,14 @@ import {
     Routes,
     Navigate,
   } from "react-router-dom";
+  import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const loggedIn = useSelector((state) => state.auth.isAuthenticated);
   return (
     <div>
       <div className="navbar">
-        {/* {loggedIn ? (
+        {loggedIn ? (
           <>
             <Link className="navbar-text" to="/">
               Home
@@ -36,7 +38,6 @@ export default function Navbar() {
             </Link>
           </>
         )}
-        {console.log(loggedIn)} */}
       </div>
     </div>
   );

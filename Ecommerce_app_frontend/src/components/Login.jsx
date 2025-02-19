@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../App.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector , useDispatch } from "react-redux";
+import { loginSuccess, logout } from "../redux/authSlice"; 
 import { Link } from "react-router-dom";
 
 export default function Login() {
@@ -9,6 +11,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log(isAuthenticated);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -32,7 +38,8 @@ export default function Login() {
         localStorage.setItem("access-token", headers["access-token"]);
         localStorage.setItem("client", headers["client"]);
         localStorage.setItem("uid", headers["uid"]);
-
+        
+        dispatch(loginSuccess(user));
         setUser(user);
         navigate("/");
       })
