@@ -21,6 +21,7 @@ export default function Logout() {
             localStorage.removeItem('access-token');
             localStorage.removeItem('client');
             localStorage.removeItem('uid');
+            localStorage.removeItem('user');
 
             navigate('/login');
 

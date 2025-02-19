@@ -4,8 +4,7 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
 import Product from "./components/Product";
-import { useSelector , useDispatch } from "react-redux";
-import { loginSuccess, logout } from "./redux/authSlice"; 
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Route,
@@ -20,53 +19,8 @@ import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(null); 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const validateToken = async () => {
-      const token = localStorage.getItem("access-token");
-      const client = localStorage.getItem("client");
-      const uid = localStorage.getItem("uid");
-
-      if (!token || !client || !uid) {
-        dispatch(logout());
-        setLoggedIn(false); 
-        return;
-      }
-
-      try {
-        const response = await fetch("/auth/validate_token", {
-          method: "GET",
-          headers: {
-            "access-token": token,
-            client: client,
-            uid: uid,
-          },
-        });
-
-        if (response.ok) {
-          setLoggedIn(true);
-        } else {
-          setLoggedIn(false);
-          dispatch(logout());
-        }
-      } catch (error) {
-        setLoggedIn(false);
-        localStorage.clear('access-token');
-        localStorage.clear('uid');
-        localStorage.clear('client');
-        console.error("Validation error:", error);
-      }
-    };
-
-    validateToken();
-  }, [dispatch]);
-
-  if (loggedIn === null) {
-    return <div>Loading...</div>; 
-  }
+  console.log(isAuthenticated)
 
   return (
     <>
@@ -83,7 +37,7 @@ function App() {
             <Route path="/products" element={<Product/>} />
             <Route
               path="/profile"
-              element={loggedIn ? <Profile /> : <Navigate to="/login" />}
+              element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
