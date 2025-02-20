@@ -1,0 +1,25 @@
+.main-page{
+    position: relative;
+    background: url('../assets/background.jpg') no-repeat center center/cover;
+    width: 100vw;
+    height: 80vh;
+}
+
+.main-page::after{
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:  100%;
+    background: linear-gradient(to right , rgba(0,0,0,0.8), rgba(0,0,0,0));
+    position: absolute;
+    pointer-events: none;
+}
+
+
+.main-heading{
+    color: white;
+    font-size: 4rem;
+    z-index: 2;
+    position: relative;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserProfile, updateUserProfile } from "./Api";
 import { Navigate } from "react-router-dom";
+import DeleteProfile from "./DeleteProfile";
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -73,7 +74,7 @@ export default function Profile() {
   }
 
   return (
-    <div>
+    <div className="inner-page">
       <h1>User Profile</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -156,6 +157,7 @@ export default function Profile() {
 
         }
       </form>
+      <DeleteProfile/>
     </div>
   );
 }

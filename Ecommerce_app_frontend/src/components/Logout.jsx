@@ -34,7 +34,7 @@ export default function Logout() {
     }
 
   return (
-    <div>
+    <div className='logout-button'>
         <button onClick={handleClick}>Logout</button>
     </div>
   )

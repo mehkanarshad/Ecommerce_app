@@ -32,7 +32,7 @@ export default function Product() {
     
   }
   return (
-    <>
+    <div className="inner-page">
       <div>Products</div>
       {/* <p>{products}</p> */}
       {products ? (
@@ -52,6 +52,6 @@ export default function Product() {
         "No products found"
       )}
       <p>{message}</p>
-    </>
+    </div>
   );
 }

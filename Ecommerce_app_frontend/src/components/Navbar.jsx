@@ -1,12 +1,14 @@
 import React from "react";
+import "../styles/Navbar.css";
 import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Routes,
-    Navigate,
-  } from "react-router-dom";
-  import { useSelector } from "react-redux";
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import Logout from "./Logout";
 
 export default function Navbar() {
   const loggedIn = useSelector((state) => state.auth.isAuthenticated);
@@ -15,17 +17,22 @@ export default function Navbar() {
       <div className="navbar">
         {loggedIn ? (
           <>
-            <Link className="navbar-text" to="/">
-              Home
-            </Link>{" "}
-            {"  |  "}
-            <Link className="navbar-text" to="/profile">
-              Profile
-            </Link>
-            {"  |  "}
-            <Link className="navbar-text" to="/products">
-              Products
-            </Link>
+            <div className="left-navbar">
+              <Link className="navbar-text" to="/">
+                Home
+              </Link>
+            </div>
+            <div className="right-navbar">
+              <Link className="navbar-text" to="/profile">
+                Profile
+              </Link>
+              {"  |  "}
+              <Link className="navbar-text" to="/products">
+                Products
+              </Link>
+              {"  |  "}
+              <Logout/>
+            </div>
           </>
         ) : (
           <>
