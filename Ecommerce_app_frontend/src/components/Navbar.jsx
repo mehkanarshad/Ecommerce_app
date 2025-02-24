@@ -2,10 +2,7 @@ import React from "react";
 import "../styles/Navbar.css";
 import {
   BrowserRouter as Router,
-  Route,
-  Link,
-  Routes,
-  Navigate,
+  Link
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Logout from "./Logout";
@@ -26,11 +23,9 @@ export default function Navbar() {
               <Link className="navbar-text" to="/profile">
                 Profile
               </Link>
-              {"  |  "}
               <Link className="navbar-text" to="/products">
                 Products
               </Link>
-              {"  |  "}
               <Logout/>
             </div>
           </>

@@ -21,5 +21,7 @@
     color: white;
     font-size: 4rem;
     z-index: 2;
-    position: relative;
+    position: absolute;
+    top: 30%;
+    left: 10%;
 }
