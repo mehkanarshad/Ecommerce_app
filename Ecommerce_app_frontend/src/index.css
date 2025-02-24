@@ -9,7 +9,12 @@ html, body {
   padding-top: 100px;
 }
 
-a:-webkit-any-link {
+/* a:-webkit-any-link {
+  color: inherit !important;
+  text-decoration: none !important;
+} */
+
+.navbar-text {
   color: inherit !important;
   text-decoration: none !important;
 }
@@ -27,4 +32,29 @@ button{
   color: white !important;
   display: inline;
   font-size: inherit;
+}
+
+.primary-button{
+  display: inline;
+  color: black;
+  background-color: white;
+  height: 60px;
+  width: 1200px;
+  padding: 15px 30px;
+  margin: 10px;
+  text-decoration: none;
+  text-transform:uppercase;
+}
+
+.secondary-button{
+  display: inline;
+  color: white;
+  background-color: transparent;
+  height: 70px;
+  width: 1200px;
+  padding: 15px 30px;
+  margin: 10px;
+  border: 2px solid white;
+  text-decoration: none;
+  text-transform: uppercase;
 }

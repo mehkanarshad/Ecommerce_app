@@ -16,12 +16,33 @@
     pointer-events: none;
 }
 
-
-.main-heading{
+.main-section{
     color: white;
-    font-size: 4rem;
-    z-index: 2;
     position: absolute;
     top: 30%;
     left: 10%;
+    z-index: 2;
+}
+
+.main-heading{
+    font-size: 4rem;    
+    display: inline-block;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinkCursor 0.8s infinite;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-heading{
+    margin-bottom: 50px;
+    margin-left: 5px;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+@keyframes blinkCursor {
+    50% {border-right: 2px solid transparent;}
 }
