@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Logout from './Logout'
 import DeleteProfile from './DeleteProfile'
 import '../styles/Home.css'
+import Carousel from './Carousel';
 
 export default function Home() {
   const phrases = [
@@ -48,8 +49,8 @@ export default function Home() {
     return () => clearTimeout(timeoutId);
   } , [charIndex , isDeleting , phraseIndex])
   return (
+    <>
     <div className='inner-page main-page'>
-      <image src='https://images.unsplash.com/photo-1543698666-124b9208bb03?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NHx8fGVufDB8fHx8fA%3D%3D' width="100vw" height="100%"/>
       <div className='main-section'>
         <p className='main-heading'>{displayedText}</p>
         <p className='sub-heading'>25% Off On All Products</p>
@@ -57,5 +58,9 @@ export default function Home() {
         <a href="" className='secondary-button'> Find More </a>
       </div>
     </div>
+    <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+      <Carousel/>
+    </div>
+    </>
   )
 }
