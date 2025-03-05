@@ -5,9 +5,9 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .inner-page{
+.inner-page{
   padding-top: 100px;
-} */
+}
 
 /* a:-webkit-any-link {
   color: inherit !important;
@@ -23,13 +23,22 @@ html, body {
   border: none !important;
   background: none !important;
   color: white !important;
-  display: inline;
+  /* display: inline; */
 }
+
+
+.logout-button-dark{
+  border: none !important;
+  background: none !important;
+  color: black !important;
+  /* display: inline; */
+}
+
 
 button{
   border: none !important;
   background: none !important;
-  color: white !important;
+  /* color: white !important; */
   display: inline;
   font-size: inherit;
 }

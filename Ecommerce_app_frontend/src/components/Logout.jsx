@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate , useLocation} from 'react-router-dom'
 
 
 export default function Logout() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const isHome = location.pathname === "/"
     const handleClick = async ()=>{
         const accessToken = localStorage.getItem('access-token');
         const uid = localStorage.getItem('uid');
@@ -34,8 +36,8 @@ export default function Logout() {
     }
 
   return (
-    <div className='logout-button'>
-        <button onClick={handleClick}>Logout</button>
+    <div>
+        <button className={isHome? 'logout-button' : 'logout-button-dark'} onClick={handleClick}>Logout</button>
     </div>
   )
 }

@@ -11,16 +11,39 @@
     padding: 40px;
     z-index: 1000;
     color: white !important;
+    /* background-color: rgba(80, 78, 78, 0.24); */
+}
+
+.navbar-dark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    z-index: 1000;
+    color: black !important;
+    /* background-color: rgba(80, 78, 78, 0.24); */
 }
 
 .left-navbar{
     font-family: "Paytone One", serif;
     font-weight: 400;
     font-style: normal;
-    color: white !important;
+    /* color: white !important; */
     text-decoration: none !important;
     font-size: 40px;
 }
+
+.right-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
 .navbar-text{
     padding: 10px;

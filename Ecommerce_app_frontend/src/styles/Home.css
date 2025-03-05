@@ -75,7 +75,7 @@
     transform: translateX(-50%);
     color: rgb(168, 164, 164);
     font-size: 16px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 10px 20px;
     text-align: left;
     width: 80%;

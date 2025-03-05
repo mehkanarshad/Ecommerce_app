@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import Card1 from '../assets/Card1.jpg';
 import Card2 from '../assets/Card2.jpg';
 import Card3 from '../assets/Card3.jpg';
+import Navbar from './Navbar';
 
 export default function Home() {
   const phrases = [
@@ -53,7 +54,7 @@ export default function Home() {
   } , [charIndex , isDeleting , phraseIndex])
   return (
     <>
-    <div className='inner-page main-page'>
+    <div className='main-page'>
       <div className='main-section'>
         <p className='main-heading'>{displayedText}</p>
         <p className='sub-heading'>25% Off On All Products</p>

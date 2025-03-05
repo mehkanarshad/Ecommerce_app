@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { getProducts } from "./Api";
+import Navbar from "./Navbar";
 
 export default function Product() {
   // const [products, setProducts] = useState({
@@ -33,6 +34,7 @@ export default function Product() {
   }
   return (
     <div className="inner-page">
+      <div style={{color: "black"}}><Navbar/></div>
       <div>Products</div>
       {/* <p>{products}</p> */}
       {products ? (
