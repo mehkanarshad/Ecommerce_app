@@ -65,10 +65,29 @@ export default function Home() {
       <Carousel/>
     </div>
     <div className="cards">
-      <img src={Card1} alt="Card 1" className='card' />
-      <img src={Card2} alt="Card 2" className='card' />
-      <img src={Card3} alt="Card 3" className='card' />
+      <div className="card">
+        <img src={Card1} alt="Card 1" className="card-img" />
+        <div className="card-text">
+          <h1>Luxury Meets Comfort</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+      </div>
+      <div className="card">
+        <img src={Card2} alt="Card 2" className="card-img" />
+        <div className="card-text">
+          <h1>Where Trends Begin</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+      <div className="card">
+        <img src={Card3} alt="Card 3" className="card-img" />
+        <div className="card-text">
+          <h1>Effortless Glamour</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        </div>
+      </div>
     </div>
+
     </>
   )
 }

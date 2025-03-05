@@ -37,27 +37,53 @@
     padding: 0;
 }
 
-.cards{
+.cards {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.card{
+.card {
     width: 450px;
-    height: 600px; 
+    height: 600px;
     margin: 10px;
     position: relative;
+    overflow: hidden; 
 }
 
-.card::after{
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.card::after {
     content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top , rgba(0,0,0,0.8), rgba(0,0,0,0));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
+
+.card-text {
     position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(168, 164, 164);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: left;
+    width: 80%;
+    z-index: 2;
+}
+
+.card-text h1{
+    color: white;
 }
 
 
