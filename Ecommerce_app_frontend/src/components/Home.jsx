@@ -3,6 +3,9 @@ import Logout from './Logout'
 import DeleteProfile from './DeleteProfile'
 import '../styles/Home.css'
 import Carousel from './Carousel';
+import Card1 from '../assets/Card1.jpg';
+import Card2 from '../assets/Card2.jpg';
+import Card3 from '../assets/Card3.jpg';
 
 export default function Home() {
   const phrases = [
@@ -58,8 +61,13 @@ export default function Home() {
         <a href="" className='secondary-button'> Find More </a>
       </div>
     </div>
-    <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+    <div style={{display: "flex", alignItems: "center", justifyContent: "center" }}>
       <Carousel/>
+    </div>
+    <div className="cards">
+      <img src={Card1} alt="Card 1" className='card' />
+      <img src={Card2} alt="Card 2" className='card' />
+      <img src={Card3} alt="Card 3" className='card' />
     </div>
     </>
   )
