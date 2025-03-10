@@ -6,10 +6,10 @@ class ProductsController < ApplicationController
 
   def show
     product = Product.find_by(params[:id])
-    if product 
+    if product
       render json: product
-    else 
-      render json: {error: 'Product not found'}, status: :not_found
+    else
+      render json: { error: 'Product not found' }, status: :not_found
     end
   end
 
@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
     product = Product.find_by(params[:id])
     if product.update(product_params)
       render json: product
-    else 
-      render json: {error: product.errors.full_messages} , status: :unprocessable_entity
+    else
+      render json: { error: product.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -26,9 +26,9 @@ class ProductsController < ApplicationController
     product = Product.find_by(params[:id])
     if product
       product.destroy
-      render json: {message: 'Produc deleted successfully'}
+      render json: { message: 'Product deleted successfully' }
     else
-      render json: {error: 'Product not found'}, status: :not_found
+      render json: { error: 'Product not found' }, status: :not_found
     end
   end
 
@@ -38,4 +38,3 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :description, :price, :stock)
   end
 end
-

@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
-    devise :database_authenticatable, :registerable,
-      :recoverable, :rememberable, :trackable, :validatable,
-      :confirmable, :omniauthable
-    has_one_attached :image
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :omniauthable
+  has_one_attached :image
 
-#   def logged_in
-#     render json: { logged_in: true }
-#   end
-  enum role: { admin: 'admin', seller: 'seller', customer: 'customer'}
-  validates :role, inclusion: {in: roles.keys}
-  has_many :products , dependent: :destroy
-  after_initialize :set_default_role , if: :new_record?
+  #   def logged_in
+  #     render json: { logged_in: true }
+  #   end
+  enum role: { admin: 'admin', seller: 'seller', customer: 'customer' }
+  validates :role, inclusion: { in: roles.keys }
+  has_many :products, dependent: :destroy
+  after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
-    self.role ||= "customer"
+    self.role ||= 'customer'
   end
 
   def confirmation_required?
@@ -24,5 +26,4 @@ class User < ApplicationRecord
   def image_url
     Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) if image.attached?
   end
-
 end

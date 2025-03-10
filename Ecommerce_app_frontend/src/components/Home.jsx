@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Logout from './Logout'
-import DeleteProfile from './DeleteProfile'
 import '../styles/Home.css'
 import Carousel from './Carousel';
 import Card1 from '../assets/Card1.jpg';
 import Card2 from '../assets/Card2.jpg';
 import Card3 from '../assets/Card3.jpg';
-import Navbar from './Navbar';
+import Product from './Product'
 
 export default function Home() {
   const phrases = [
@@ -88,7 +86,12 @@ export default function Home() {
         </div>
       </div>
     </div>
-
+    <div className='products'>
+      <div>
+        <h1>Featured Products</h1>
+        <Product/>
+     </div>
+    </div>
     </>
   )
 }

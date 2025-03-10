@@ -97,3 +97,15 @@
 @keyframes blinkCursor {
     50% {border-right: 2px solid transparent;}
 }
+
+
+/* .........................................................................Products.............................................................  */
+
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5deb391;
+    color: black;
+    margin-top: 70px;
+}

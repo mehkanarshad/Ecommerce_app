@@ -34,7 +34,6 @@ export default function Product() {
   }
   return (
     <div className="inner-page">
-      <div style={{color: "black"}}><Navbar/></div>
       <div>Products</div>
       {/* <p>{products}</p> */}
       {products ? (
