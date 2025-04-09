@@ -1,30 +1,36 @@
 # frozen_string_literal: true
 
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
 
-user = User.first || User.create!(
-  name: 'Test User',
-  email: 'test@example.com',
-  password: 'password',
-  password_confirmation: 'password'
-)
+User.destroy_all
+Product.destroy_all
 
-20.times do |i|
-  Product.create!(
-    user: user,
-    name: "Product ##{i + 1}",
-    description: "Description for Product ##{i + 1}",
-    price: rand(10.0..500.0).round(2),
-    stock: rand(1..100)
+puts '🚀 Starting to seed fake users and products...'
+
+10.times do |i|
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    password: 'password',
+    password_confirmation: 'password',
+    confirmed_at: Time.now
   )
+  puts "✅ [User #{i + 1}] Created: #{user.email}"
+
+  rand(1..3).times do |j|
+    product = Product.create!(
+      name: Faker::Commerce.product_name,
+      description: Faker::Lorem.sentence,
+      price: Faker::Commerce.price(range: 0..100),
+      stock: rand(1..50),
+      user: user
+    )
+    puts "   📦 [Product #{j + 1}] for #{user.email}: #{product.name}"
+  rescue StandardError => e
+    puts "❌ Failed to create product for #{user.email}: #{e.message}"
+  end
+rescue StandardError => e
+  puts "❌ Failed to create user #{i + 1}: #{e.message}"
 end
 
-puts '✅ Seeded 20 products successfully!'
+puts "🎉 Done! Seeded #{User.count} users and #{Product.count} products."

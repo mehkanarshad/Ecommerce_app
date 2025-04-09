@@ -11,6 +11,7 @@ gem 'rails', '~> 7.1.4'
 gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
+gem 'faker'
 gem 'puma', '>= 5.0'
 gem 'rubocop', require: false
 
