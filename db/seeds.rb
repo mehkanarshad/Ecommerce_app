@@ -34,3 +34,4 @@ rescue StandardError => e
 end
 
 puts "🎉 Done! Seeded #{User.count} users and #{Product.count} products."
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

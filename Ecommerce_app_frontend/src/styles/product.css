@@ -1,0 +1,12 @@
+.product-container{
+    display: flex;
+    /* justify-content: space-between; */
+    border: 10 px solid black;
+    flex-wrap: wrap;
+}
+
+.product{
+    border: 10px solid pink;
+    width: 300px;
+    margin: 20px;
+}
